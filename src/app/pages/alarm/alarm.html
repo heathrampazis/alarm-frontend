@@ -1,0 +1,16 @@
+<h1>Home Alarm</h1>
+
+@if(alarmService.state$ | async; as state){
+    @if(state.alarmTriggered){
+        <div class="alarm-box">
+            <h2>🚨 ALARM TRIGGERED 🚨</h2>
+            <button (click)="clearAlarm()"> Turn Off Alarm </button>
+        </div>
+    }
+    <h2>Status</h2>
+    <p> Armed: {{ state.armed ? 'YES' : 'NO' }} </p>
+    <p> Motion Detected: {{ state.motionDetected ? 'YES' : 'NO' }} </p>
+    <p> Alarm: {{ state.alarmTriggered ? 'ACTIVE' : 'CLEAR' }} </p>
+    <button (click)="arm()"> Arm </button>
+    <button (click)="disarm()"> Disarm </button>
+}
